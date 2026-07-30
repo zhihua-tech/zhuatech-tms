@@ -1,0 +1,9 @@
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+package cn.zhuatech.tms;
+import org.junit.jupiter.api.Test;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.http.MediaType;import org.springframework.test.web.servlet.MockMvc;import java.util.regex.*;import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+@SpringBootTest @AutoConfigureMockMvc class TmsApiIntegrationTests {
+    @Autowired MockMvc mvc;
+    private String login()throws Exception{String json=mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON).content("{\"username\":\"admin\",\"password\":\"admin123\"}")).andExpect(status().isOk()).andExpect(jsonPath("$.data.user.role").value("ADMIN")).andReturn().getResponse().getContentAsString();Matcher m=Pattern.compile("\\\"token\\\":\\\"([^\\\"]+)\\\"").matcher(json);if(!m.find())throw new AssertionError("登录响应中缺少 token");return m.group(1);}
+    @Test void adminCanReadDashboard()throws Exception{mvc.perform(get("/api/admin/dashboard").header("Authorization","Bearer "+login())).andExpect(status().isOk()).andExpect(jsonPath("$.data.totalOrders").value(4)).andExpect(jsonPath("$.data.inTransit").value(1)).andExpect(jsonPath("$.data.urgentOrders.length()").value(2));}
+    @Test void anonymousRequestIsDenied()throws Exception{mvc.perform(get("/api/admin/dashboard")).andExpect(status().isForbidden());}
+}

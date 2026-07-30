@@ -1,0 +1,4 @@
+/* Copyright 2026 上海如静知华信息科技有限公司 */
+import {createRouter,createWebHistory} from 'vue-router';
+import LoginView from '../views/LoginView.vue';import AdminDashboard from '../views/admin/AdminDashboard.vue';import OrderCenter from '../views/admin/OrderCenter.vue';import DispatchBoard from '../views/admin/DispatchBoard.vue';import DriverHome from '../views/driver/DriverHome.vue';import DriverTask from '../views/driver/DriverTask.vue';
+export default createRouter({history:createWebHistory(),routes:[{path:'/',redirect:'/admin/dashboard'},{path:'/login',component:LoginView},{path:'/admin/dashboard',component:AdminDashboard,meta:{shell:'admin'}},{path:'/admin/orders',component:OrderCenter,meta:{shell:'admin'}},{path:'/admin/dispatch',component:DispatchBoard,meta:{shell:'admin'}},{path:'/driver/home',component:DriverHome,meta:{shell:'driver'}},{path:'/driver/task/:id?',component:DriverTask,meta:{shell:'driver'}}]})
