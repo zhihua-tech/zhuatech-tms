@@ -14,3 +14,7 @@
 | POST | `/api/driver/tasks/{id}/sign` | 提交电子签收回单 |
 
 除登录接口外均需 `Authorization: Bearer <token>`。演示接口仅用于个人非商业学习。
+
+## 交付风险
+
+`POST /api/admin/delivery-risk`：计算在途 ETA、预计延误、风险分和调度动作。
