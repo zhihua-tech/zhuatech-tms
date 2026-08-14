@@ -17,6 +17,10 @@
 
 </div>
 
+## 运输碳排估算
+
+`POST /api/tms/insights/carbon-estimate` 根据载货里程、空返里程、载重、车辆容量和单位里程排放因子，计算 CO₂e 总量、吨公里排放强度、装载率与空驶率，并给出 A/B/C 效率等级。低装载、空返偏高或高排放场景会生成合单、返程配货和车辆替换建议。
+
 ## 运输合单与装载优化
 
 新增 `POST /api/tms/insights/load-consolidation`，比较合单前后车辆装载率，并综合新增重量、绕行距离、车辆载重和单位里程排放输出 `CONSOLIDATE / REVIEW / KEEP_SEPARATE`。调度员可以在不超载、不产生过度绕行的前提下提升满载率并量化额外碳排放。
