@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.tms.model;
 import jakarta.persistence.*;import java.time.LocalDate;
 @Entity @Table(name="tms_driver") public class Driver extends BaseEntity {

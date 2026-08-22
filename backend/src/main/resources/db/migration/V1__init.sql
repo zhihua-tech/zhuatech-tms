@@ -1,4 +1,4 @@
--- Copyright 2026 上海如静知华信息科技有限公司
+-- Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/
 CREATE TABLE sys_user (id BIGINT PRIMARY KEY AUTO_INCREMENT,username VARCHAR(40) NOT NULL UNIQUE,password VARCHAR(100) NOT NULL,display_name VARCHAR(40) NOT NULL,role VARCHAR(20) NOT NULL,enabled BOOLEAN NOT NULL,created_at DATETIME NOT NULL,updated_at DATETIME NOT NULL);
 CREATE TABLE tms_driver (id BIGINT PRIMARY KEY AUTO_INCREMENT,code VARCHAR(24) NOT NULL UNIQUE,name VARCHAR(40) NOT NULL,phone VARCHAR(20) NOT NULL,license_no VARCHAR(30) NOT NULL,license_expiry DATE NOT NULL,status VARCHAR(20) NOT NULL,created_at DATETIME NOT NULL,updated_at DATETIME NOT NULL);
 CREATE TABLE tms_vehicle (id BIGINT PRIMARY KEY AUTO_INCREMENT,plate_no VARCHAR(16) NOT NULL UNIQUE,vehicle_type VARCHAR(40) NOT NULL,capacity_tons DECIMAL(10,2) NOT NULL,capacity_cbm DECIMAL(10,2) NOT NULL,status VARCHAR(20) NOT NULL,current_position VARCHAR(80),created_at DATETIME NOT NULL,updated_at DATETIME NOT NULL);

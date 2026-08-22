@@ -1,4 +1,4 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 export const orders=[
  {id:1,no:'TO-20260730-018',customer:'杭州云川智能装备有限公司',origin:'上海·松江',destination:'杭州·滨江',cargo:'工业控制柜 18 台',weight:'8.6 t',volume:'42 m³',pickup:'07-30 08:30',delivery:'07-30 16:30',status:'运输中',priority:'加急',driver:'陈海峰',plate:'沪A·7T528',freight:'¥3,680',progress:68,eta:'14:20'},
  {id:2,no:'TO-20260730-023',customer:'苏州恒微电子科技有限公司',origin:'上海·嘉定',destination:'苏州·园区',cargo:'电子元器件 36 箱',weight:'1.2 t',volume:'9.5 m³',pickup:'07-30 12:30',delivery:'07-30 16:00',status:'待调度',priority:'普通',driver:'—',plate:'—',freight:'¥980',progress:10,eta:'待调度'},

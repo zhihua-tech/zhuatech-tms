@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.tms.model;
 import jakarta.persistence.*;import java.math.BigDecimal;import java.time.LocalDateTime;
 @Entity @Table(name="tms_transport_order") public class TransportOrder extends BaseEntity {
