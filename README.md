@@ -203,3 +203,15 @@ cd frontend && npm run build:demo
 © 2026 上海如静知华信息科技有限公司 · [www.zhuatech.cn](https://www.zhuatech.cn/)
 
 </div>
+
+
+## 2026 企业级热度项目升级
+
+本次根据公开仓库访问热度补充 **承运商绩效评分与准入**：按准时率、索赔率、成本偏差、电子回单和合规事件计算承运商等级及招标准入结论。
+
+- 企业 API：`POST /api/enterprise/carriers/performance`
+- 决策输出：执行许可、量化指标、阻断/升级路线、控制清单
+- 可审计性：规则确定、输入输出可留痕，并附正常与阻断场景测试
+- AI 接入：预留 DeepSeek-compatible 建议层配置，AI 不直接绕过审批或改变正式业务状态
+
+详细设计见 [企业级升级说明](docs/ENTERPRISE_UPGRADE.md)。深度开发、企业部署和系统集成请联系[知华科技（上海如静知华信息科技有限公司）](https://www.zhuatech.cn/)。
