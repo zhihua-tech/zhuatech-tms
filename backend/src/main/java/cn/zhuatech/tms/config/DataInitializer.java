@@ -1,7 +1,13 @@
 /* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.tms.config;
 import cn.zhuatech.tms.model.*;import cn.zhuatech.tms.repository.*;import org.springframework.boot.CommandLineRunner;import org.springframework.context.annotation.*;import org.springframework.security.crypto.password.PasswordEncoder;import java.math.BigDecimal;import java.time.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Configuration public class DataInitializer {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Bean CommandLineRunner seed(UserRepository users,DriverRepository drivers,VehicleRepository vehicles,TransportOrderRepository orders,TrackingEventRepository events,PasswordEncoder encoder){return args->{if(users.count()>0)return;
         users.save(new UserAccount("admin",encoder.encode("admin123"),"运营管理员",UserAccount.Role.ADMIN));users.save(new UserAccount("dispatcher",encoder.encode("dispatch123"),"调度专员",UserAccount.Role.DISPATCHER));users.save(new UserAccount("driver",encoder.encode("driver123"),"示例司机",UserAccount.Role.DRIVER));
         var d1=drivers.save(new Driver("DR-021","陈海峰","13800002021","A2-310106198812021234",LocalDate.of(2029,8,31),"任务中"));var d2=drivers.save(new Driver("DR-035","周启明","13800002035","A2-320105199005126318",LocalDate.of(2028,12,18),"可调度"));drivers.save(new Driver("DR-048","邱志远","13800002048","B2-330106198911230651",LocalDate.of(2027,10,9),"可调度"));

@@ -10,8 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class DeliveryRiskService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request request) {
         double travelHours = request.remainingKm() / request.averageSpeedKmh();
         double etaHours = travelHours + (travelHours > request.drivingHoursLeft() ? 8 : 0);
@@ -27,12 +33,21 @@ public class DeliveryRiskService {
         return new Result(request.transportOrderNo(), round(etaHours), round(delayHours), score, status, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private double round(double value) { return Math.round(value * 100.0) / 100.0; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String transportOrderNo, @Min(0) double remainingKm,
                           @Positive double averageSpeedKmh, @Min(0) double drivingHoursLeft,
                           @Positive double promisedHours, @Min(0) @Max(100) int weatherRisk,
                           boolean urgent) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String transportOrderNo, double etaHours, double delayHours,
                          int riskScore, String status, List<String> actions) {}
 }

@@ -8,9 +8,15 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class TransportCarbonServiceTests {
     private final TransportCarbonService service = new TransportCarbonService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void gradesEfficientFullLoadTransport() {
         var result = service.estimate(new TransportCarbonService.Request("TMS-1001", new BigDecimal("500"),
             BigDecimal.ZERO, new BigDecimal("12"), new BigDecimal("15"), new BigDecimal("0.80")));
@@ -18,6 +24,9 @@ class TransportCarbonServiceTests {
         assertThat(result.emissionsKgCo2e()).isEqualByComparingTo("400.00");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void recommendsReturnLoadForEmptyMileage() {
         var result = service.estimate(new TransportCarbonService.Request("TMS-1002", new BigDecimal("300"),
             new BigDecimal("180"), new BigDecimal("4"), new BigDecimal("12"), new BigDecimal("1.10")));

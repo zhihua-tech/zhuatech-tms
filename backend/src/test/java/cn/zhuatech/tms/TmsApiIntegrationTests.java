@@ -1,10 +1,25 @@
 /* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.tms;
 import org.junit.jupiter.api.Test;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.http.MediaType;import org.springframework.test.web.servlet.MockMvc;import java.util.regex.*;import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @SpringBootTest @AutoConfigureMockMvc class TmsApiIntegrationTests {
     @Autowired MockMvc mvc;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private String login()throws Exception{String json=mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON).content("{\"username\":\"admin\",\"password\":\"admin123\"}")).andExpect(status().isOk()).andExpect(jsonPath("$.data.user.role").value("ADMIN")).andReturn().getResponse().getContentAsString();Matcher m=Pattern.compile("\\\"token\\\":\\\"([^\\\"]+)\\\"").matcher(json);if(!m.find())throw new AssertionError("登录响应中缺少 token");return m.group(1);}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void adminCanReadDashboard()throws Exception{mvc.perform(get("/api/admin/dashboard").header("Authorization","Bearer "+login())).andExpect(status().isOk()).andExpect(jsonPath("$.data.totalOrders").value(4)).andExpect(jsonPath("$.data.inTransit").value(1)).andExpect(jsonPath("$.data.urgentOrders.length()").value(2));}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void adminCanEvaluateDeliveryRisk()throws Exception{mvc.perform(post("/api/admin/delivery-risk").header("Authorization","Bearer "+login()).contentType(MediaType.APPLICATION_JSON).content("{\"transportOrderNo\":\"TO-20260801\",\"remainingKm\":800,\"averageSpeedKmh\":50,\"drivingHoursLeft\":6,\"promisedHours\":18,\"weatherRisk\":70,\"urgent\":true}")).andExpect(status().isOk()).andExpect(jsonPath("$.data.etaHours").value(24.0)).andExpect(jsonPath("$.data.delayHours").value(6.0)).andExpect(jsonPath("$.data.riskScore").value(48)).andExpect(jsonPath("$.data.status").value("AT_RISK"));}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void anonymousRequestIsDenied()throws Exception{mvc.perform(get("/api/admin/dashboard")).andExpect(status().isForbidden());}
 }

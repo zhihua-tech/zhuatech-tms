@@ -11,8 +11,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class LoadConsolidationService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request request) {
         BigDecimal combinedWeight = request.plannedWeightKg().add(request.additionalWeightKg());
         BigDecimal currentUtilization = request.plannedWeightKg()
@@ -36,6 +42,9 @@ public class LoadConsolidationService {
             extraEmission, decision, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String routeCode,
                           @DecimalMin("0.01") BigDecimal vehicleCapacityKg,
                           @DecimalMin("0") BigDecimal plannedWeightKg,
@@ -45,6 +54,9 @@ public class LoadConsolidationService {
                           @DecimalMin("0") BigDecimal emissionFactorKgPerKm,
                           @DecimalMin("0") BigDecimal maxDetourKm) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String routeCode, BigDecimal currentUtilization,
                          BigDecimal combinedUtilization, BigDecimal extraEmissionKg,
                          String decision, List<String> actions) {}

@@ -8,9 +8,15 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class LoadConsolidationServiceTests {
     private final LoadConsolidationService service = new LoadConsolidationService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void consolidatesCompatibleLoadWithMeaningfulUtilizationGain() {
         var result = service.evaluate(new LoadConsolidationService.Request(
@@ -23,6 +29,9 @@ class LoadConsolidationServiceTests {
         assertEquals("CONSOLIDATE", result.decision());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void keepsLoadsSeparateWhenVehicleWouldBeOverloaded() {
         var result = service.evaluate(new LoadConsolidationService.Request(

@@ -10,8 +10,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class TransportCarbonService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result estimate(Request request) {
         BigDecimal totalDistance = request.distanceKm().add(request.emptyReturnKm());
         BigDecimal emissions = totalDistance.multiply(request.emissionFactorKgPerKm()).setScale(2, RoundingMode.HALF_UP);
@@ -29,12 +35,18 @@ public class TransportCarbonService {
         return new Result(request.shipmentNo(), emissions, intensity, loadFactor, emptyRate, efficiency, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String shipmentNo,
                           @DecimalMin("0.01") BigDecimal distanceKm,
                           @DecimalMin("0") BigDecimal emptyReturnKm,
                           @DecimalMin("0.01") BigDecimal cargoWeightTon,
                           @DecimalMin("0.01") BigDecimal vehicleCapacityTon,
                           @DecimalMin("0.0001") BigDecimal emissionFactorKgPerKm) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String shipmentNo, BigDecimal emissionsKgCo2e,
                          BigDecimal intensityKgPerTonKm, BigDecimal loadFactor,
                          BigDecimal emptyMileageRate, String efficiencyGrade, List<String> actions) {}

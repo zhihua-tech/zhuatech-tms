@@ -11,9 +11,16 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 企业承运商绩效卡，用于月度复盘、招标准入和运输份额调整。 */
+/**
+ * 企业承运商绩效卡，用于月度复盘、招标准入和运输份额调整。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class CarrierPerformanceService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Scorecard evaluate(Request request) {
         int delivered = Math.max(1, request.completedShipments());
         BigDecimal onTimeRate = percent(request.onTimeShipments(), delivered);
@@ -40,16 +47,25 @@ public class CarrierPerformanceService {
                 costVarianceRate, score, tier, tenderEligible, List.copyOf(actions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private BigDecimal percent(int value, int total) {
         return BigDecimal.valueOf(value * 100L).divide(BigDecimal.valueOf(total), 2, RoundingMode.HALF_UP);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String carrierCode, @Min(1) int completedShipments,
                           @Min(0) int onTimeShipments, @Min(0) int claimShipments,
                           @Min(0) int electronicPodShipments, @Min(0) int complianceIncidents,
                           @DecimalMin("0.01") BigDecimal quotedFreight,
                           @DecimalMin("0") BigDecimal actualFreight) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Scorecard(String carrierCode, BigDecimal onTimeRate, BigDecimal claimRate,
                             BigDecimal electronicPodRate, BigDecimal costVarianceRate,
                             int score, String tier, boolean tenderEligible, List<String> actions) {}

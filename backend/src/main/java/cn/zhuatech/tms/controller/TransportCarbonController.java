@@ -6,12 +6,21 @@ import cn.zhuatech.tms.service.TransportCarbonService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/tms/insights")
 public class TransportCarbonController {
     private final TransportCarbonService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public TransportCarbonController(TransportCarbonService service) { this.service = service; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/carbon-estimate")
     public ApiResponse<TransportCarbonService.Result> estimate(@Valid @RequestBody TransportCarbonService.Request request) {
         return ApiResponse.ok(service.estimate(request));
