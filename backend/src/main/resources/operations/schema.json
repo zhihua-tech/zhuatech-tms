@@ -1,0 +1,97 @@
+{
+  "slug": "tms",
+  "title": "车辆等待免费期与滞留计费试算",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "waitingMinutes",
+      "label": "核定等待分钟",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "525600"
+    },
+    {
+      "key": "freeMinutes",
+      "label": "合同免费分钟",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "525600"
+    },
+    {
+      "key": "billingBlockMinutes",
+      "label": "计费块分钟",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1440"
+    },
+    {
+      "key": "pricePerBlock",
+      "label": "每块费率",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "billedDetention",
+      "label": "登记滞留费",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "tolerance",
+      "label": "容差",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "billableMinutes",
+      "label": "扣免费后分钟"
+    },
+    {
+      "key": "billingBlocks",
+      "label": "计费块数"
+    },
+    {
+      "key": "expectedDetention",
+      "label": "试算滞留费"
+    },
+    {
+      "key": "billingVariance",
+      "label": "登记费用差异"
+    }
+  ],
+  "description": "先扣合同免费等待分钟，再按输入计费块向上进位，与承运商登记滞留费核对，不自动结算。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "waitingMinutes": "181",
+        "freeMinutes": "120",
+        "billingBlockMinutes": "60",
+        "pricePerBlock": "100",
+        "billedDetention": "200",
+        "tolerance": "0.01"
+      }
+    ]
+  }
+}

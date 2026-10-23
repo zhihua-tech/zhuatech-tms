@@ -1,0 +1,50 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "billableMinutes": "#61",
+      "billingBlocks": "#2",
+      "expectedDetention": "#200"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "waitingMinutes": "180",
+      "billedDetention": "100"
+    },
+    "expected": {
+      "decision": "PASS",
+      "billingBlocks": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "waitingMinutes": "120",
+      "billedDetention": "0"
+    },
+    "expected": {
+      "decision": "PASS",
+      "billingBlocks": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "billedDetention": "199"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "billingBlockMinutes": "0"
+    },
+    "expected": {},
+    "error": true
+  }
+]
