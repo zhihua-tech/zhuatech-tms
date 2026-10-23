@@ -1,5 +1,14 @@
 <div align="center">
 
+## 本次升级：运输装载与签收数量预检
+
+支持 UTF-8 CSV 文件/粘贴预检、物理行定位、批次重复业务键检查、模板下载和安全 CSV 导出。
+
+- 装载重量不能超过额定载重。
+- 签收数量不能超过发运数量。
+
+入口：`/preflight.html`（沿用现有后端认证）。预检不写库、不执行审批，也不替代主数据存在性、库存/余额锁定及正式入库事务校验。[规则、接口与边界说明](docs/BATCH-PREFLIGHT.md)。
+
 # ZhuaTech TMS
 
 [简体中文](README.md) | [English](README.en.md)

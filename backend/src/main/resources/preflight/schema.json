@@ -1,0 +1,86 @@
+{
+  "slug": "tms",
+  "title": "运输装载与签收数量预检",
+  "fields": [
+    {
+      "key": "trip_no",
+      "label": "运输单",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "vehicle",
+      "label": "车牌标识",
+      "type": "TEXT",
+      "length": 200
+    },
+    {
+      "key": "load_kg",
+      "label": "装载重量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    },
+    {
+      "key": "capacity_kg",
+      "label": "额定载重",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2,
+      "min": "0.01"
+    },
+    {
+      "key": "shipped",
+      "label": "发运件数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0
+    },
+    {
+      "key": "delivered",
+      "label": "签收件数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0
+    }
+  ],
+  "unique": [
+    [
+      "trip_no"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "LE",
+      "args": [
+        "load_kg",
+        "capacity_kg"
+      ],
+      "code": "OVERLOAD",
+      "message": "装载重量不能超过额定载重",
+      "bad": {
+        "load_kg": "5001"
+      }
+    },
+    {
+      "op": "LE",
+      "args": [
+        "delivered",
+        "shipped"
+      ],
+      "code": "DELIVERY_COUNT",
+      "message": "签收数量不能超过发运数量",
+      "bad": {
+        "delivered": "101"
+      }
+    }
+  ],
+  "sampleCsv": "trip_no,vehicle,load_kg,capacity_kg,shipped,delivered\nTRIP-001,示例车辆01,4000,5000,100,90\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
